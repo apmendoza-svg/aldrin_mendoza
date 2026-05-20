@@ -11,6 +11,7 @@ jobs:
     environment: develop
     steps:
       - run: echo ${{vars.ALDRIN_MNDZ}}
+      - run: echo ${{vars.AL_MNDZ}}
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
