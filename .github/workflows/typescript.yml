@@ -1,21 +1,20 @@
-name: Playwright Tests
-
+name: Hello World
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  test:
+  greet:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: npx playwright install --with-deps
-      - run: npm test
+      - uses: Say Hello
+      - uses: echo "Hello from GitHub Actions!"
+        with: node-version: 18
+      - name: Install dependencies
+        run: npm install
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run Playwright Tests
+        run: npx playwright test
         env:
-          CI: true
+          BASE_URL: ${{ secrets.BASE_URL }}
